@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta name="google-site-verification" content="CghjEUa0pdPGP569bIYHkwj2pK1Of-Z1UxCG3vj85j8" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="ANSHUL VISUALS — premium browser photo editing studio by Anshul Rathour.">
@@ -40,13 +39,35 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted)}.foot{
 .modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:90}.modal.show{display:flex}.modal-box{width:min(620px,100%);background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}.modal-box h3{font-size:1.5rem;margin-bottom:8px}.modal-box p{color:var(--muted)}.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
 @media(max-width:900px){.hero{grid-template-columns:1fr}.editor-grid{grid-template-columns:1fr}.panel{border-left:0;border-top:1px solid var(--line);max-height:none}.tools{grid-template-columns:1fr 1fr}.owner{grid-template-columns:1fr}.owner img{max-width:320px}}
 @media(max-width:650px){nav{display:none;position:absolute;top:72px;left:0;right:0;background:#090b10;padding:15px;flex-direction:column;border-bottom:1px solid var(--line)}nav.open{display:flex}.menu{display:block}.gallery{grid-template-columns:1fr}.gallery img{height:360px}.tools{grid-template-columns:1fr}.editor-head{flex-direction:column;align-items:stretch}.hero{padding-top:45px}.grid2{grid-template-columns:1fr}}
+
+.video-editor{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.video-head{padding:17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:15px}
+.video-grid{display:grid;grid-template-columns:1.2fr .8fr}
+.video-stage{background:#050609;padding:18px;min-height:500px;display:flex;align-items:center;justify-content:center;position:relative}
+.video-wrap{width:100%;max-width:850px;aspect-ratio:16/9;background:#000;border-radius:18px;overflow:hidden;position:relative;border:1px solid var(--line);box-shadow:0 25px 70px #0009}
+.video-wrap video{width:100%;height:100%;object-fit:contain;display:block;transform-origin:center;transition:.15s}
+.video-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;padding:25px;text-align:center}
+.video-overlay .overlay-text{font-weight:900;font-size:clamp(22px,4vw,48px);color:#fff;text-shadow:0 3px 10px #000,0 0 2px #000;max-width:90%;word-break:break-word}
+.video-overlay .overlay-watermark{position:absolute;right:16px;bottom:12px;color:#fff9;font-weight:800;font-size:14px;text-shadow:0 1px 5px #000}
+.video-empty{text-align:center;color:var(--muted);padding:35px}
+.video-controls{padding:18px;border-left:1px solid var(--line);max-height:760px;overflow:auto}
+.timeline{padding:16px;border-top:1px solid var(--line);background:#0b0d13}
+.timeline-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.timeline input[type=range]{width:100%}
+.timebox{font-variant-numeric:tabular-nums;color:#ddd;font-size:.86rem;min-width:95px;text-align:center}
+.video-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.video-buttons .btn{flex:1;min-width:90px}
+.video-status{color:var(--muted);font-size:.85rem;margin-top:10px}
+.video-exporting{outline:2px solid var(--gold)}
+@media(max-width:900px){.video-grid{grid-template-columns:1fr}.video-controls{border-left:0;border-top:1px solid var(--line);max-height:none}.video-stage{min-height:360px}}
+@media(max-width:650px){.video-head{flex-direction:column;align-items:stretch}.timeline-row{grid-template-columns:1fr}.timebox{min-width:0;text-align:left}}
 </style>
 </head>
 <body>
 <header><div class="container nav">
 <a class="logo" href="#home">ANSHUL <span>VISUALS</span></a>
 <button class="menu" id="menu">☰</button>
-<nav id="nav"><a href="#home">Home</a><a href="#showcase">Showcase</a><a href="#editor">Editor</a><a href="#tools">Tools</a><a href="#about">About</a><a href="#faq">FAQ</a></nav>
+<nav id="nav"><a href="#home">Home</a><a href="#showcase">Showcase</a><a href="#editor">Photo Editor</a><a href="#video-editor">Video Editor</a><a href="#tools">Tools</a><a href="#about">About</a><a href="#faq">FAQ</a></nav>
 </div></header>
 
 <main id="home">
@@ -98,6 +119,143 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted)}.foot{
 </div></div></div>
 </section>
 
+
+<section class="container section" id="video-editor">
+<h2 class="title">Premium Video Editor</h2>
+<p class="sub">Upload a video and edit it directly in your browser. Trim, crop, rotate, flip, filter, add text/watermark, change speed and volume, then export the edited result.</p>
+<div class="video-editor">
+  <div class="video-head">
+    <div>
+      <b>🎬 ANSHUL VISUALS — Video Studio</b>
+      <div class="muted" id="videoStatus">No video selected — upload an MP4, WebM or MOV file.</div>
+    </div>
+    <div class="actions" style="margin:0">
+      <label class="btn primary" style="display:inline-block" for="videoFile">🎥 Upload Video</label>
+      <input id="videoFile" type="file" accept="video/*" hidden>
+      <button class="btn" id="videoUseSample">📂 Choose Video</button>
+    </div>
+  </div>
+
+  <div class="video-grid">
+    <div>
+      <div class="video-stage">
+        <div class="video-wrap" id="videoWrap">
+          <video id="video" playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="overlay-text" id="videoTextOverlay"></div>
+            <div class="overlay-watermark" id="videoWatermarkOverlay"></div>
+          </div>
+          <div class="video-empty" id="videoEmpty"><b>🎬 Your video will appear here</b><br>Upload a video to start editing.</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-row">
+          <button class="btn small" id="videoPlay">▶ Play</button>
+          <input id="videoSeek" type="range" min="0" max="100" value="0" step="0.01">
+          <div class="timebox"><span id="videoCurrent">00:00</span> / <span id="videoDuration">00:00</span></div>
+        </div>
+        <div class="video-buttons">
+          <button class="btn small" id="videoBack">⏪ -5s</button>
+          <button class="btn small" id="videoForward">+5s ⏩</button>
+          <button class="btn small" id="videoSetStart">Set Start</button>
+          <button class="btn small" id="videoSetEnd">Set End</button>
+          <button class="btn small" id="videoResetTrim">Reset Trim</button>
+        </div>
+        <div class="video-status">Trim: <b id="trimLabel">00:00 → 00:00</b></div>
+      </div>
+    </div>
+
+    <div class="video-controls">
+      <div class="group">
+        <div class="control">
+          <label>Brightness <span id="vbv">100%</span></label>
+          <input id="vBrightness" type="range" min="50" max="150" value="100">
+        </div>
+        <div class="control">
+          <label>Contrast <span id="vcv">100%</span></label>
+          <input id="vContrast" type="range" min="50" max="160" value="100">
+        </div>
+        <div class="control">
+          <label>Saturation <span id="vsv">100%</span></label>
+          <input id="vSaturation" type="range" min="0" max="180" value="100">
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="control"><label>Filter</label>
+          <select id="vFilter">
+            <option value="none">Original</option>
+            <option value="grayscale">Classic B&W</option>
+            <option value="sepia">Warm Sepia</option>
+            <option value="cinematic">Cinematic</option>
+            <option value="vivid">Vivid</option>
+            <option value="cool">Cool Tone</option>
+            <option value="warm">Warm Tone</option>
+          </select>
+        </div>
+        <div class="control"><label>Aspect Ratio</label>
+          <select id="vAspect">
+            <option value="16:9">16:9 Landscape</option>
+            <option value="9:16">9:16 Reel/Short</option>
+            <option value="1:1">1:1 Square</option>
+            <option value="4:5">4:5 Portrait</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="control"><label>Playback Speed <span id="vSpeedLabel">1×</span></label>
+          <select id="vSpeed">
+            <option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option>
+            <option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option>
+          </select>
+        </div>
+        <div class="control"><label>Volume <span id="vVolLabel">100%</span></label>
+          <input id="vVolume" type="range" min="0" max="100" value="100">
+        </div>
+        <div class="grid2">
+          <button class="btn small" id="vMute">🔇 Mute</button>
+          <button class="btn small" id="vRotate">↻ Rotate 90°</button>
+          <button class="btn small" id="vFlipH">↔ Flip H</button>
+          <button class="btn small" id="vFlipV">↕ Flip V</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="control"><label>Text Overlay</label>
+          <input id="vText" type="text" placeholder="Write your text...">
+        </div>
+        <div class="grid2">
+          <button class="btn small" id="vAddText">Add Text</button>
+          <button class="btn small" id="vClearText">Clear Text</button>
+        </div>
+        <div class="control" style="margin-top:12px"><label>Watermark</label>
+          <input id="vWatermark" type="text" placeholder="ANSHUL VISUALS">
+        </div>
+        <div class="grid2">
+          <button class="btn small" id="vAddWatermark">Add Watermark</button>
+          <button class="btn small" id="vClearWatermark">Clear</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="grid2">
+          <button class="btn small" id="vPro">✨ Pro Look</button>
+          <button class="btn small" id="vCinematic">🎞 Cinematic</button>
+          <button class="btn small" id="vBW">◐ B&W</button>
+          <button class="btn small" id="vReset">↺ Reset Video</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <button class="btn primary" id="vExport" style="width:100%">⬇ Export Edited Video</button>
+        <div class="video-status" id="exportStatus">Export uses your browser's built-in video recorder. The downloaded file is normally WebM.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 <section class="container section" id="tools">
 <h2 class="title">Creative Tools</h2>
 <p class="sub">Every card below performs an action on the editor instead of being a dead button.</p>
@@ -113,6 +271,7 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted)}.foot{
 <button class="tool" data-tool="download"><span>⬇️</span><b>Quick Download</b><p>Export your current edit.</p></button>
 <button class="tool" data-tool="reset"><span>↩️</span><b>Reset Editor</b><p>Return to original settings.</p></button>
 <button class="tool" data-tool="upload"><span>📷</span><b>Upload New Photo</b><p>Choose another image.</p></button>
+<button class="tool" data-tool="video"><span>🎬</span><b>Video Editor</b><p>Trim, filter and export videos.</p></button>
 <button class="tool" data-tool="about"><span>👤</span><b>Owner Profile</b><p>View Anshul's information.</p></button>
 </div>
 </section>
@@ -209,12 +368,202 @@ document.querySelectorAll('.tool').forEach(btn=>btn.onclick=()=>{
   else if(t==='download')$('download').click()
   else if(t==='reset')resetEditor()
   else if(t==='upload')file.click()
+  else if(t==='video')$('video-editor').scrollIntoView({behavior:'smooth'})
   else if(t==='about')$('about').scrollIntoView({behavior:'smooth'})
  },ready?0:250);
 });
 $('menu').onclick=()=>$('nav').classList.toggle('open');
 
 $('modalClose').onclick=()=>$('modal').classList.remove('show');
+
+// ===== ANSHUL VISUALS VIDEO EDITOR =====
+const video=$('video'), videoFile=$('videoFile'), videoSeek=$('videoSeek');
+const videoEmpty=$('videoEmpty'), videoWrap=$('videoWrap');
+let videoURL='', videoLoaded=false, trimStart=0, trimEnd=0, videoRot=0, videoFlipX=1, videoFlipY=1;
+let vText='', vWatermark='', exporting=false, audioCtx=null, mediaSourceNode=null, gainNode=null;
+
+function fmt(sec){
+ if(!isFinite(sec)) return '00:00';
+ sec=Math.max(0,Math.floor(sec)); const m=Math.floor(sec/60), s=sec%60;
+ return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function setVideoStatus(t){$('videoStatus').textContent=t}
+function currentVideoFilter(){
+ const b=$('vBrightness').value, c=$('vContrast').value, s=$('vSaturation').value;
+ let extra='';
+ switch($('vFilter').value){
+  case 'grayscale': extra=' grayscale(1)'; break;
+  case 'sepia': extra=' sepia(.85)'; break;
+  case 'cinematic': extra=' sepia(.18) hue-rotate(340deg) saturate(1.15) contrast(1.12)'; break;
+  case 'vivid': extra=' saturate(1.35) contrast(1.08)'; break;
+  case 'cool': extra=' hue-rotate(15deg) saturate(1.05)'; break;
+  case 'warm': extra=' sepia(.18) saturate(1.2)'; break;
+ }
+ return `brightness(${b}%) contrast(${c}%) saturate(${s}%)${extra}`;
+}
+function applyVideoPreview(){
+ if(!videoLoaded)return;
+ video.style.filter=currentVideoFilter();
+ video.style.transform=`rotate(${videoRot}deg) scale(${videoFlipX},${videoFlipY})`;
+ const aspect=$('vAspect').value;
+ const ratio=aspect==='9:16'?'9/16':aspect==='1:1'?'1/1':aspect==='4:5'?'4/5':'16/9';
+ videoWrap.style.aspectRatio=ratio;
+ $('videoTextOverlay').textContent=vText;
+ $('videoWatermarkOverlay').textContent=vWatermark;
+}
+function updateTrimLabel(){
+ $('trimLabel').textContent=fmt(trimStart)+' → '+fmt(trimEnd || video.duration || 0);
+}
+function loadVideo(file){
+ if(videoURL)URL.revokeObjectURL(videoURL);
+ videoURL=URL.createObjectURL(file);
+ video.src=videoURL; videoLoaded=false; videoRot=0;videoFlipX=1;videoFlipY=1;
+ video.load(); videoEmpty.style.display='none'; video.style.display='block';
+ setVideoStatus(file.name+' • '+(file.size/1024/1024).toFixed(2)+' MB');
+}
+videoFile.onchange=e=>{const f=e.target.files[0];if(f)loadVideo(f)}
+video.addEventListener('loadedmetadata',()=>{
+ videoLoaded=true; trimStart=0; trimEnd=video.duration; videoSeek.max=video.duration; videoSeek.value=0;
+ $('videoDuration').textContent=fmt(video.duration); $('videoCurrent').textContent='00:00';
+ updateTrimLabel(); applyVideoPreview(); setVideoStatus('Video ready • choose your edits and export');
+});
+video.addEventListener('timeupdate',()=>{
+ if(!videoLoaded)return;
+ videoSeek.value=video.currentTime; $('videoCurrent').textContent=fmt(video.currentTime);
+ if(!exporting && trimEnd && video.currentTime>=trimEnd-0.03){video.pause();video.currentTime=trimStart}
+});
+video.addEventListener('play',()=>$('videoPlay').textContent='⏸ Pause');
+video.addEventListener('pause',()=>$('videoPlay').textContent='▶ Play');
+$('videoPlay').onclick=()=>{if(!videoLoaded){toast('Upload a video first');return} video.paused?video.play():video.pause()};
+videoSeek.oninput=()=>{if(videoLoaded)video.currentTime=Number(videoSeek.value)}
+$('videoBack').onclick=()=>{if(videoLoaded)video.currentTime=Math.max(trimStart,video.currentTime-5)}
+$('videoForward').onclick=()=>{if(videoLoaded)video.currentTime=Math.min(trimEnd||video.duration,video.currentTime+5)}
+$('videoSetStart').onclick=()=>{if(videoLoaded){trimStart=Math.min(video.currentTime,trimEnd-0.05);updateTrimLabel();toast('Trim start set')}}
+$('videoSetEnd').onclick=()=>{if(videoLoaded){trimEnd=Math.max(video.currentTime,trimStart+0.05);updateTrimLabel();toast('Trim end set')}}
+$('videoResetTrim').onclick=()=>{if(videoLoaded){trimStart=0;trimEnd=video.duration;updateTrimLabel();toast('Trim reset')}}
+$('vBrightness').oninput=e=>{$('vbv').textContent=e.target.value+'%';applyVideoPreview()}
+$('vContrast').oninput=e=>{$('vcv').textContent=e.target.value+'%';applyVideoPreview()}
+$('vSaturation').oninput=e=>{$('vsv').textContent=e.target.value+'%';applyVideoPreview()}
+$('vFilter').onchange=applyVideoPreview;
+$('vAspect').onchange=applyVideoPreview;
+$('vSpeed').onchange=e=>{video.playbackRate=Number(e.target.value);$('vSpeedLabel').textContent=e.target.value+'×'}
+$('vVolume').oninput=e=>{video.volume=Number(e.target.value)/100;$('vVolLabel').textContent=e.target.value+'%'}
+$('vMute').onclick=()=>{video.muted=!video.muted;$('vMute').textContent=video.muted?'🔊 Unmute':'🔇 Mute'}
+$('vRotate').onclick=()=>{videoRot=(videoRot+90)%360;applyVideoPreview()}
+$('vFlipH').onclick=()=>{videoFlipX*=-1;applyVideoPreview()}
+$('vFlipV').onclick=()=>{videoFlipY*=-1;applyVideoPreview()}
+$('vAddText').onclick=()=>{vText=$('vText').value.trim();applyVideoPreview();toast(vText?'Text added':'Type text first')}
+$('vClearText').onclick=()=>{vText='';$('vText').value='';applyVideoPreview()}
+$('vAddWatermark').onclick=()=>{vWatermark=$('vWatermark').value.trim()||'ANSHUL VISUALS';$('vWatermark').value=vWatermark;applyVideoPreview();toast('Watermark added')}
+$('vClearWatermark').onclick=()=>{vWatermark='';$('vWatermark').value='';applyVideoPreview()}
+$('vPro').onclick=()=>{$('vBrightness').value=106;$('vbv').textContent='106%';$('vContrast').value=112;$('vcv').textContent='112%';$('vSaturation').value=125;$('vsv').textContent='125%';$('vFilter').value='vivid';applyVideoPreview();toast('Pro look applied')}
+$('vCinematic').onclick=()=>{$('vFilter').value='cinematic';$('vContrast').value=112;$('vcv').textContent='112%';applyVideoPreview();toast('Cinematic applied')}
+$('vBW').onclick=()=>{$('vFilter').value='grayscale';applyVideoPreview();toast('B&W applied')}
+$('vReset').onclick=()=>{
+ $('vBrightness').value=100;$('vbv').textContent='100%';$('vContrast').value=100;$('vcv').textContent='100%';
+ $('vSaturation').value=100;$('vsv').textContent='100%';$('vFilter').value='none';$('vAspect').value='16:9';
+ $('vSpeed').value=1;$('vSpeedLabel').textContent='1×';video.playbackRate=1;
+ $('vVolume').value=100;$('vVolLabel').textContent='100%';video.volume=1;video.muted=false;$('vMute').textContent='🔇 Mute';
+ videoRot=0;videoFlipX=1;videoFlipY=1;vText='';vWatermark='';$('vText').value='';$('vWatermark').value='';
+ if(videoLoaded){trimStart=0;trimEnd=video.duration;video.currentTime=0;updateTrimLabel();applyVideoPreview()}
+ toast('Video editor reset')
+}
+
+function drawVideoFrame(ctx, w, h){
+ ctx.clearRect(0,0,w,h);ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
+ const aspect=$('vAspect').value;
+ let target=w/h;
+ const srcRatio=video.videoWidth/video.videoHeight;
+ let dw=w,dh=h;
+ if(srcRatio>target){dh=h;dw=h*srcRatio}else{dw=w;dh=w/srcRatio}
+ // rotate swaps effective dimensions
+ ctx.save();ctx.translate(w/2,h/2);ctx.rotate(videoRot*Math.PI/180);ctx.scale(videoFlipX,videoFlipY);
+ let fitW=dw,fitH=dh;
+ if(Math.abs(videoRot%180)===90){fitW=dh;fitH=dw}
+ ctx.filter=currentVideoFilter();
+ ctx.drawImage(video,-fitW/2,-fitH/2,fitW,fitH);ctx.filter='none';ctx.restore();
+
+ if(vText){
+  ctx.save();ctx.textAlign='center';ctx.textBaseline='middle';
+  const size=Math.max(24,Math.min(w,h)*.07);ctx.font=`900 ${size}px Arial`;
+  ctx.lineWidth=Math.max(4,size*.12);ctx.strokeStyle='#000b';ctx.fillStyle='#fff';
+  ctx.strokeText(vText,w/2,h*.82);ctx.fillText(vText,w/2,h*.82);ctx.restore();
+ }
+ if(vWatermark){
+  ctx.save();ctx.textAlign='right';ctx.textBaseline='bottom';ctx.font=`800 ${Math.max(14,Math.min(w,h)*.028)}px Arial`;
+  ctx.fillStyle='#fff9';ctx.shadowColor='#000';ctx.shadowBlur=4;ctx.fillText(vWatermark,w-18,h-14);ctx.restore();
+ }
+}
+function getExportSize(){
+ const aspect=$('vAspect').value;
+ let baseW=video.videoWidth, baseH=video.videoHeight;
+ let target=aspect==='9:16'?9/16:aspect==='1:1'?1:aspect==='4:5'?.8:16/9;
+ let w=baseW,h=Math.round(w/target);
+ if(h>baseH*2){h=baseH;w=Math.round(h*target)}
+ // keep output reasonable on mobile
+ const max=1280;
+ if(w>max){h=Math.round(h*max/w);w=max}
+ if(h>max){w=Math.round(w*max/h);h=max}
+ return [Math.max(320,w),Math.max(320,h)]
+}
+async function exportVideo(){
+ if(!videoLoaded){toast('Upload a video first');return}
+ if(!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream){
+  toast('Your browser does not support video export');
+  return
+ }
+ if(exporting)return;
+ exporting=true;$('vExport').disabled=true;$('vExport').textContent='⏳ Exporting...';$('exportStatus').textContent='Preparing video export...';videoWrap.classList.add('video-exporting');
+ const [w,h]=getExportSize(), out=document.createElement('canvas');out.width=w;out.height=h;const octx=out.getContext('2d');
+ const stream=out.captureStream(30);
+ let audioStream=null, audioDest=null;
+ try{
+  if(video.captureStream){
+   audioStream=video.captureStream();
+   const tracks=audioStream.getAudioTracks();
+   if(tracks.length){
+    if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended')await audioCtx.resume();
+    if(!mediaSourceNode) mediaSourceNode=audioCtx.createMediaElementSource(video);
+    gainNode=audioCtx.createGain();gainNode.gain.value=video.muted?0:video.volume;
+    audioDest=audioCtx.createMediaStreamDestination();
+    mediaSourceNode.connect(gainNode);gainNode.connect(audioDest);gainNode.connect(audioCtx.destination);
+    audioDest.stream.getAudioTracks().forEach(t=>stream.addTrack(t));
+   }
+  }
+ }catch(e){ console.warn('Audio routing unavailable',e) }
+ const mimeCandidates=['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'];
+ let mime=mimeCandidates.find(x=>MediaRecorder.isTypeSupported(x))||'video/webm';
+ const recorder=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:5000000});
+ const chunks=[];recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
+ const done=new Promise(resolve=>recorder.onstop=resolve);
+ const oldTime=video.currentTime, oldRate=video.playbackRate, wasMuted=video.muted;
+ video.pause();video.currentTime=trimStart;video.playbackRate=Number($('vSpeed').value);
+ await new Promise(r=>{const fn=()=>{video.removeEventListener('seeked',fn);r()};video.addEventListener('seeked',fn)});
+ recorder.start(200);
+ video.play().catch(()=>{});
+ $('exportStatus').textContent='Recording edited frames...';
+ await new Promise(resolve=>{
+  let last=performance.now();
+  const loop=now=>{
+   drawVideoFrame(octx,w,h);
+   if(video.currentTime>=trimEnd-0.03 || video.ended){resolve();return}
+   requestAnimationFrame(loop)
+  };
+  requestAnimationFrame(loop);
+ });
+ video.pause();drawVideoFrame(octx,w,h);recorder.stop();await done;
+ if(audioCtx){try{mediaSourceNode.disconnect();gainNode.disconnect()}catch(e){}}
+ const blob=new Blob(chunks,{type:mime});const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+ a.download='anshul-visuals-edited-video.webm';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+ video.currentTime=Math.min(oldTime,video.duration);video.playbackRate=oldRate;video.muted=wasMuted;
+ exporting=false;$('vExport').disabled=false;$('vExport').textContent='⬇ Export Edited Video';$('exportStatus').textContent='Export complete. Downloaded as WebM.';videoWrap.classList.remove('video-exporting');toast('Edited video downloaded');
+}
+$('vExport').onclick=exportVideo;
+
+// Optional: create a lightweight showcase card action without pretending an image is a video.
+$('videoUseSample').onclick=()=>videoFile.click();
+
 loadData(PHOTO1,'Anshul Showcase Photo');
 </script>
 </body>
