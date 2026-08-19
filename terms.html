@@ -1,0 +1,1109 @@
+Check out my Code Studio Project: *terms.html*
+
+📄 *HTML:*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Terms and Conditions for ANSHUL VISUALS.">
+
+<title>Terms & Conditions | ANSHUL VISUALS</title>
+
+<style>
+:root{
+    --bg:#080a10;
+    --card:#12151d;
+    --text:#ffffff;
+    --muted:#adb4c2;
+    --gold:#f4c76a;
+    --line:#ffffff18;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+    radial-gradient(circle at 10% 0%,#6b451d38,transparent 30%),
+    var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.container{
+    width:min(950px,92%);
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#080a10e8;
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+}
+
+.nav{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-weight:900;
+    letter-spacing:.08em;
+}
+
+.logo span{
+    color:var(--gold);
+}
+
+nav{
+    display:flex;
+    gap:18px;
+}
+
+nav a{
+    color:#ddd;
+    font-weight:700;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+.menu{
+    display:none;
+    background:#151821;
+    border:1px solid var(--line);
+    color:#fff;
+    border-radius:10px;
+    padding:9px 12px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    padding:65px 0 30px;
+}
+
+.badge{
+    display:inline-block;
+    color:var(--gold);
+    border:1px solid #f4c76a55;
+    background:#f4c76a12;
+    border-radius:99px;
+    padding:5px 11px;
+    font-size:.8rem;
+    font-weight:800;
+    letter-spacing:.06em;
+}
+
+h1{
+    font-size:clamp(2.5rem,6vw,4.5rem);
+    line-height:1;
+    margin:18px 0 12px;
+
+    background:
+    linear-gradient(110deg,#fff,#f4c76a);
+
+    color:transparent;
+    background-clip:text;
+    -webkit-background-clip:text;
+}
+
+.lead{
+    color:var(--muted);
+    font-size:1.05rem;
+    max-width:780px;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.btn{
+    display:inline-block;
+    border:1px solid var(--line);
+    background:#171a22;
+    padding:10px 14px;
+    border-radius:11px;
+    font-weight:800;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    border-color:#f4c76a55;
+}
+
+.primary{
+    background:
+    linear-gradient(135deg,#f7d77f,#b97b20);
+    color:#171108;
+    border:0;
+}
+
+/* CONTENT */
+
+.content{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:30px;
+    margin:20px 0 60px;
+}
+
+section{
+    padding:19px 0;
+    border-bottom:1px solid var(--line);
+}
+
+section:last-child{
+    border-bottom:0;
+}
+
+h2{
+    font-size:1.45rem;
+    margin-bottom:8px;
+}
+
+p,
+li{
+    color:var(--muted);
+}
+
+ul{
+    padding-left:23px;
+    margin:8px 0;
+}
+
+.notice{
+    background:#f4c76a10;
+    border:1px solid #f4c76a33;
+    border-radius:14px;
+    padding:15px;
+    margin:15px 0;
+}
+
+.phone{
+    color:var(--gold);
+    font-weight:800;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+    color:var(--muted);
+}
+
+.footer-links{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:7px;
+}
+
+.footer-links a:hover{
+    color:var(--gold);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    nav{
+        display:none;
+        position:absolute;
+        top:72px;
+        left:0;
+        right:0;
+        background:#080a10;
+        padding:15px;
+        flex-direction:column;
+        border-bottom:1px solid var(--line);
+    }
+
+    nav.open{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a class="logo" href="index.html">
+ANSHUL <span>VISUALS</span>
+</a>
+
+<button
+class="menu"
+id="menu"
+aria-label="Open navigation">
+☰
+</button>
+
+<nav id="nav">
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="tutorials.html">Tutorials</a>
+
+<a href="faq.html">FAQ</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<section class="hero">
+
+<span class="badge">
+LEGAL INFORMATION
+</span>
+
+<h1>
+Terms & Conditions
+</h1>
+
+<p class="lead">
+These Terms & Conditions explain the basic rules for using
+ANSHUL VISUALS and its browser-based creative tools.
+</p>
+
+<div class="actions">
+
+<a
+class="btn primary"
+href="index.html">
+
+← Back Home
+
+</a>
+
+<a
+class="btn"
+href="privacy-policy.html">
+
+Privacy Policy
+
+</a>
+
+</div>
+
+</section>
+
+
+<article class="content">
+
+
+<section>
+
+<h2>
+1. Acceptance of Terms
+</h2>
+
+<p>
+By accessing or using ANSHUL VISUALS, you agree to follow
+these Terms & Conditions. If you do not agree with these
+terms, please do not use the website.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+2. About the Website
+</h2>
+
+<p>
+ANSHUL VISUALS provides creative and educational
+browser-based tools and content related to photo editing,
+video editing, visual design and tutorials.
+</p>
+
+<p>
+Website features may be changed, improved, removed or
+added over time.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+3. Use of Editing Tools
+</h2>
+
+<p>
+You are responsible for the photos, videos and other
+content you choose to use with the website.
+</p>
+
+<p>
+You should only edit or process content that you own
+or have permission to use.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+4. Browser-Based Processing
+</h2>
+
+<p>
+Some tools may process selected media locally in your
+browser. Actual behavior can depend on your browser,
+device and the particular tool.
+</p>
+
+<div class="notice">
+
+<strong>Important:</strong>
+Do not assume that every future feature will process
+files locally unless the feature specifically states so.
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>
+5. User Content
+</h2>
+
+<p>
+ANSHUL VISUALS does not claim ownership of your original
+photos, videos or other creative material merely because
+you use the website to edit them.
+</p>
+
+<p>
+You remain responsible for the rights and permissions
+associated with your content.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+6. Prohibited Use
+</h2>
+
+<p>
+You must not use the website to create, process,
+distribute or promote unlawful, abusive, fraudulent,
+harmful or infringing material.
+</p>
+
+<p>
+You must not attempt to damage, disrupt, reverse engineer
+or interfere with the website or its services.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+7. Intellectual Property
+</h2>
+
+<p>
+The ANSHUL VISUALS name, website design, original text,
+graphics, code and other original website materials may
+be protected by applicable intellectual-property laws.
+</p>
+
+<p>
+You may not copy or redistribute substantial portions
+of the website as your own without appropriate permission.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+8. Third-Party Services and Links
+</h2>
+
+<p>
+The website may use or link to third-party services such
+as hosting, analytics, advertising, communication or
+external websites.
+</p>
+
+<p>
+Those services have their own terms and privacy policies.
+ANSHUL VISUALS is not responsible for the policies or
+availability of external services.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+9. Advertising
+</h2>
+
+<p>
+If advertising is enabled on the website, advertisements
+may be provided by third-party advertising services.
+</p>
+
+<p>
+The appearance of an advertisement does not mean that
+ANSHUL VISUALS endorses every advertised product or service.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+10. Website Availability
+</h2>
+
+<p>
+We aim to keep the website available and functional,
+but uninterrupted availability cannot be guaranteed.
+</p>
+
+<p>
+Maintenance, technical problems, hosting issues,
+browser limitations or other circumstances may
+temporarily affect features.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+11. No Guarantee of Results
+</h2>
+
+<p>
+Editing tools are provided for creative and general
+purpose use.
+</p>
+
+<p>
+We do not guarantee that every tool will produce a
+particular artistic result or work identically on
+every device and browser.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+12. Disclaimer
+</h2>
+
+<p>
+To the extent permitted by applicable law, the website
+and its tools are provided on an “as available” basis.
+</p>
+
+<p>
+We do not guarantee that the service will always be
+error-free, uninterrupted or suitable for every
+particular purpose.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+13. Limitation of Liability
+</h2>
+
+<p>
+To the extent permitted by applicable law, ANSHUL VISUALS
+and its creator are not responsible for losses resulting
+from use or inability to use the website.
+</p>
+
+<p>
+This may include issues caused by devices, browsers,
+third-party services or user-provided content.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+14. Privacy
+</h2>
+
+<p>
+Your use of this website is also subject to our
+Privacy Policy.
+</p>
+
+<div class="actions">
+
+<a
+class="btn primary"
+href="privacy-policy.html">
+
+Read Privacy Policy
+
+</a>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>
+15. Contact
+</h2>
+
+<p>
+For questions about these Terms & Conditions,
+you can contact the site owner.
+</p>
+
+<p>
+<strong>Owner:</strong>
+Anshul Rathour
+</p>
+
+<p>
+<strong>Location:</strong>
+Lakhimpur Kheri, Uttar Pradesh, India
+</p>
+
+<p>
+<strong>Phone:</strong>
+
+<a
+class="phone"
+href="tel:+919696853735">
+
++91 9696853735
+
+</a>
+
+</p>
+
+<div class="actions">
+
+<a
+class="btn primary"
+href="contact.html">
+
+Contact Page
+
+</a>
+
+<a
+class="btn"
+href="tel:+919696853735">
+
+📞 Call
+
+</a>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>
+16. Changes to These Terms
+</h2>
+
+<p>
+These Terms & Conditions may be updated when the website,
+its features or applicable requirements change.
+</p>
+
+<p>
+The updated version will be published on this page.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>
+17. Last Updated
+</h2>
+
+<p>
+August 2026
+</p>
+
+</section>
+
+
+</article>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<p>
+© 2026 <strong>ANSHUL VISUALS</strong>.
+All rights reserved.
+</p>
+
+<div class="footer-links">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="privacy-policy.html">
+Privacy Policy
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+const menu =
+document.getElementById("menu");
+
+const nav =
+document.getElementById("nav");
+
+menu.addEventListener("click",function(){
+
+nav.classList.toggle("open");
+
+});
+
+nav.querySelectorAll("a").forEach(function(link){
+
+link.addEventListener("click",function(){
+
+nav.classList.remove("open");
+
+});
+
+});
+
+</script>
+<script>
+const menu =
+document.getElementById("menu");
+
+const nav =
+document.getElementById("nav");
+
+menu.addEventListener("click",function(){
+
+nav.classList.toggle("open");
+
+});
+
+nav.querySelectorAll("a").forEach(function(link){
+
+link.addEventListener("click",function(){
+
+nav.classList.remove("open");
+
+});
+
+});
+</script>
+
+🎨 *CSS:*
+
+:root{
+    --bg:#080a10;
+    --card:#12151d;
+    --text:#ffffff;
+    --muted:#adb4c2;
+    --gold:#f4c76a;
+    --line:#ffffff18;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+    radial-gradient(circle at 10% 0%,#6b451d38,transparent 30%),
+    var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.container{
+    width:min(950px,92%);
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#080a10e8;
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+}
+
+.nav{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-weight:900;
+    letter-spacing:.08em;
+}
+
+.logo span{
+    color:var(--gold);
+}
+
+nav{
+    display:flex;
+    gap:18px;
+}
+
+nav a{
+    color:#ddd;
+    font-weight:700;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+.menu{
+    display:none;
+    background:#151821;
+    border:1px solid var(--line);
+    color:#fff;
+    border-radius:10px;
+    padding:9px 12px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    padding:65px 0 30px;
+}
+
+.badge{
+    display:inline-block;
+    color:var(--gold);
+    border:1px solid #f4c76a55;
+    background:#f4c76a12;
+    border-radius:99px;
+    padding:5px 11px;
+    font-size:.8rem;
+    font-weight:800;
+    letter-spacing:.06em;
+}
+
+h1{
+    font-size:clamp(2.5rem,6vw,4.5rem);
+    line-height:1;
+    margin:18px 0 12px;
+
+    background:
+    linear-gradient(110deg,#fff,#f4c76a);
+
+    color:transparent;
+    background-clip:text;
+    -webkit-background-clip:text;
+}
+
+.lead{
+    color:var(--muted);
+    font-size:1.05rem;
+    max-width:780px;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.btn{
+    display:inline-block;
+    border:1px solid var(--line);
+    background:#171a22;
+    padding:10px 14px;
+    border-radius:11px;
+    font-weight:800;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    border-color:#f4c76a55;
+}
+
+.primary{
+    background:
+    linear-gradient(135deg,#f7d77f,#b97b20);
+    color:#171108;
+    border:0;
+}
+
+/* CONTENT */
+
+.content{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:30px;
+    margin:20px 0 60px;
+}
+
+section{
+    padding:19px 0;
+    border-bottom:1px solid var(--line);
+}
+
+section:last-child{
+    border-bottom:0;
+}
+
+h2{
+    font-size:1.45rem;
+    margin-bottom:8px;
+}
+
+p,
+li{
+    color:var(--muted);
+}
+
+ul{
+    padding-left:23px;
+    margin:8px 0;
+}
+
+.notice{
+    background:#f4c76a10;
+    border:1px solid #f4c76a33;
+    border-radius:14px;
+    padding:15px;
+    margin:15px 0;
+}
+
+.phone{
+    color:var(--gold);
+    font-weight:800;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+    color:var(--muted);
+}
+
+.footer-links{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:7px;
+}
+
+.footer-links a:hover{
+    color:var(--gold);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    nav{
+        display:none;
+        position:absolute;
+        top:72px;
+        left:0;
+        right:0;
+        background:#080a10;
+        padding:15px;
+        flex-direction:column;
+        border-bottom:1px solid var(--line);
+    }
+
+    nav.open{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+}
+
+⚙️ *JS:*
+const menu =
+document.getElementById("menu");
+
+const nav =
+document.getElementById("nav");
+
+menu.addEventListener("click",function(){
+
+nav.classList.toggle("open");
+
+});
+
+nav.querySelectorAll("a").forEach(function(link){
+
+link.addEventListener("click",function(){
+
+nav.classList.remove("open");
+
+});
+
+});
+const menu =
+document.getElementById("menu");
+
+const nav =
+document.getElementById("nav");
+
+menu.addEventListener("click",function(){
+
+nav.classList.toggle("open");
+
+});
+
+nav.querySelectorAll("a").forEach(function(link){
+
+link.addEventListener("click",function(){
+
+nav.classList.remove("open");
+
+});
+
+});
+
