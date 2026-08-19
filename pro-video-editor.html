@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Anshul Visuals Pro Video Editor and Professional Editing Services">
+<meta name="theme-color" content="#070b16">
+<title>Anshul Visuals — Pro Video Editor</title>
+<style>
+:root{--bg:#060914;--card:#0d1424;--card2:#111b30;--text:#f7f9ff;--muted:#aab5ca;--line:rgba(255,255,255,.1);--a:#7c5cff;--b:#00d4ff;--g:#25d366;--gold:#ffc857;--danger:#ff5577}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 10% 0,#1b2555 0,transparent 32%),radial-gradient(circle at 95% 10%,#123b50 0,transparent 28%),var(--bg);line-height:1.5}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,93%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(6,9,20,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:21px;font-weight:950}.logo span{color:var(--b)}
+nav{display:flex;gap:5px;flex-wrap:wrap}nav a{padding:8px 10px;border-radius:10px;color:#dbe4f5;font-size:13px}nav a:hover{background:#ffffff12}
+.hero{padding:55px 0 25px}.badge{display:inline-block;border:1px solid #00d4ff45;background:#00d4ff0d;color:#8deaff;padding:7px 11px;border-radius:99px;font-size:12px;font-weight:850}
+h1{font-size:clamp(35px,7vw,68px);line-height:1.02;margin:16px 0}.grad{background:linear-gradient(90deg,#fff,#9d8dff,#55e5ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:800px;color:var(--muted);font-size:17px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:0;border-radius:13px;padding:12px 16px;font-weight:850;transition:.2s}.btn:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(135deg,var(--a),#5a91ff);color:white}.secondary{background:#121c30;border:1px solid var(--line);color:#fff}.green{background:var(--g);color:#061008}.gold{background:var(--gold);color:#111}
+section{padding:35px 0}.title{font-size:29px}.sub{color:var(--muted);margin:5px 0 20px}
+.editor{display:grid;grid-template-columns:1.45fr .75fr;gap:18px}.card{background:linear-gradient(180deg,#ffffff0a,#ffffff03);border:1px solid var(--line);border-radius:21px;padding:18px;box-shadow:0 18px 55px #0005}
+.preview{position:relative;background:#000;border-radius:16px;overflow:hidden;min-height:340px;display:grid;place-items:center;border:1px solid var(--line)}
+.preview video{width:100%;max-height:520px;display:block;object-fit:contain;transition:.25s;transform-origin:center}
+.placeholder{padding:50px;text-align:center;color:#8390a9}.placeholder b{display:block;color:#fff;font-size:22px;margin-bottom:7px}
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.overlay span{font-size:clamp(25px,5vw,60px);font-weight:950;text-align:center;text-shadow:0 4px 20px #000;color:#fff}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.bar input[type=file]{display:none}
+.upload{display:inline-flex;align-items:center;justify-content:center;background:#17213a;padding:11px 14px;border-radius:12px;font-weight:850;cursor:pointer}
+.time{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.time label,.control label{font-size:12px;color:#cbd5e8}
+input[type=number],input[type=text],input[type=range],select{width:100%}
+input[type=number],input[type=text],select{background:#080e1b;border:1px solid var(--line);border-radius:10px;color:#fff;padding:10px}
+input[type=range]{accent-color:var(--a)}
+.control{padding:12px 0;border-bottom:1px solid var(--line)}.control:last-child{border:0}.control .line{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:6px}
+.value{font-size:12px;color:#8deaff}
+.locked{position:relative;overflow:hidden}.locked:after{content:"🔒 PRO";position:absolute;right:8px;top:8px;background:#ffc857;color:#111;padding:3px 7px;border-radius:99px;font-size:10px;font-weight:950}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tool{min-height:98px;text-align:left;padding:14px;border-radius:15px;background:#ffffff06;border:1px solid var(--line);color:#fff;position:relative}
+.tool small{display:block;color:var(--muted);margin-top:4px;font-size:11px}.tool .lock{position:absolute;right:10px;top:10px;font-size:12px}
+.tool.active{border-color:#7c5cff99;background:#7c5cff12}
+.status{margin-top:12px;padding:10px;border-radius:11px;background:#00d4ff0b;border:1px solid #00d4ff2d;color:#a8efff;font-size:13px}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service{padding:20px;border:1px solid var(--line);border-radius:18px;background:#ffffff05}.price{font-size:30px;font-weight:950;margin:8px 0}.service ul{list-style:none;color:#d5ddeb;font-size:13px}.service li{margin:6px 0}.service li:before{content:"✓";color:#67f4ba;font-weight:900;margin-right:7px}
+.portfolio{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.portfolio video{width:100%;border-radius:16px;background:#000;display:block}
+.modal-bg{display:none;position:fixed;inset:0;background:#000b;z-index:100;align-items:center;justify-content:center;padding:16px}
+.modal{width:min(530px,100%);background:#0c1425;border:1px solid var(--line);border-radius:21px;padding:21px;box-shadow:0 30px 100px #000}
+.close{float:right;border:0;background:transparent;color:#fff;font-size:27px}.modal h2{font-size:25px}.modal p{color:var(--muted);font-size:14px;margin:6px 0 15px}.modal input{margin:7px 0}
+.key{font-family:monospace;letter-spacing:.4px}.hint{font-size:11px;color:#7f8ba1;margin-top:5px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}footer .foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.toast{position:fixed;z-index:200;left:50%;bottom:22px;transform:translate(-50%,130px);background:#fff;color:#111;padding:11px 17px;border-radius:99px;font-weight:850;transition:.25s;box-shadow:0 20px 50px #0006}.toast.show{transform:translate(-50%,0)}
+.pro-pill{display:inline-flex;padding:5px 9px;border-radius:99px;background:#ffc857;color:#111;font-size:11px;font-weight:950}
+@media(max-width:900px){.editor{grid-template-columns:1fr}.tools{grid-template-columns:1fr 1fr}.service-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){nav{display:none}.portfolio{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr}.preview{min-height:230px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="index.html">ANSHUL <span>VISUALS</span></a>
+<nav><a href="#editor">Editor</a><a href="#tools">Pro Tools</a><a href="#services">Pricing</a><a href="#portfolio">Demo</a><a href="contact.html">Contact</a></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+<span class="badge">🎬 PROFESSIONAL VIDEO EDITING STUDIO</span>
+<h1>Edit. Enhance. <span class="grad">Deliver Pro.</span></h1>
+<p>Upload a video, test the free controls, and unlock the full Pro toolkit. The page is designed for Anshul Visuals so clients can request wedding edits, celebration videos, reels and professional photo/video work.</p>
+<div class="actions"><a class="btn primary" href="#editor">Open Editor</a><button class="btn gold" id="buyTop">⭐ Get Pro</button></div>
+</div></section>
+
+<section id="editor"><div class="wrap">
+<h2 class="title">🎬 Anshul Visuals Video Editor <span id="proState" class="pro-pill">FREE MODE</span></h2>
+<p class="sub">Free preview tools work immediately. Locked tools show the Pro purchase screen. After Pro activation, the tools become usable.</p>
+
+<div class="editor">
+<div class="card">
+<div class="preview" id="preview">
+<div class="placeholder" id="placeholder"><b>Upload a video</b><span>MP4, WebM and other browser-supported formats</span></div>
+<video id="video" controls playsinline></video>
+<div class="overlay"><span id="textOverlay"></span></div>
+</div>
+<div class="bar">
+<label class="upload">📁 Choose Video<input id="videoInput" type="file" accept="video/*"></label>
+<button class="btn secondary" id="playBtn">▶ Play</button>
+<button class="btn secondary" id="pauseBtn">⏸ Pause</button>
+<button class="btn secondary" id="resetBtn">↺ Reset</button>
+</div>
+<div class="time">
+<div><label>Trim Start (seconds)</label><input id="start" type="number" min="0" value="0" step=".1"></div>
+<div><label>Trim End (seconds)</label><input id="end" type="number" min="0" value="0" step=".1"></div>
+</div>
+<div class="actions">
+<button class="btn secondary" id="previewTrim">▶ Preview Trim</button>
+<button class="btn primary" id="exportBtn">⬇ Export Preview</button>
+</div>
+<div class="status" id="status">Upload a video to begin.</div>
+</div>
+
+<div class="card">
+<h3>🎨 Basic Controls</h3>
+<div class="control"><div class="line"><label>Brightness</label><span class="value" id="brightnessVal">100%</span></div><input id="brightness" type="range" min="50" max="160" value="100"></div>
+<div class="control"><div class="line"><label>Contrast</label><span class="value" id="contrastVal">100%</span></div><input id="contrast" type="range" min="50" max="170" value="100"></div>
+<div class="control"><div class="line"><label>Saturation</label><span class="value" id="saturationVal">100%</span></div><input id="saturation" type="range" min="0" max="180" value="100"></div>
+<div class="control"><div class="line"><label>Blur</label><span class="value" id="blurVal">0px</span></div><input id="blur" type="range" min="0" max="10" value="0"></div>
+<div class="control"><div class="line"><label>Volume</label><span class="value" id="volumeVal">100%</span></div><input id="volume" type="range" min="0" max="100" value="100"></div>
+<div class="actions">
+<button class="btn secondary" id="muteBtn">🔇 Mute</button>
+<button class="btn secondary" id="rotateBtn">↻ Rotate</button>
+<button class="btn secondary" id="mirrorBtn">↔ Mirror</button>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+<h2 class="title">🔐 Pro Video Editing Tools</h2>
+<p class="sub">Tap any locked tool. It will ask the client to purchase Pro. Once activated, the same buttons become functional.</p>
+<div class="tools" id="toolsGrid">
+<button class="tool" data-tool="Cut & Trim"><b>✂️ Cut & Trim</b><small>Set start/end and preview the selected section.</small></button>
+<button class="tool locked" data-pro="1" data-tool="Multi Clip Timeline"><b>🎞️ Multi Clip Timeline</b><small>Arrange multiple clips in one project.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Cinematic Color Grade"><b>🎨 Cinematic Color Grade</b><small>Premium cinematic looks and grading.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="LUT Presets"><b>🎭 LUT Presets</b><small>Apply professional preset looks.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Transitions"><b>✨ Transitions</b><small>Fade, zoom, slide and cinematic transitions.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Text & Titles"><b>🔤 Text & Titles</b><small>Add titles and celebration captions.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Speed Control"><b>⚡ Speed Control</b><small>Slow motion and speed ramp preview.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Audio Mixer"><b>🎵 Audio Mixer</b><small>Volume, fade and music mixing.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Noise Reduction"><b>🎙️ Noise Reduction</b><small>Clean dialogue and background noise.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Crop & Aspect"><b>📐 Crop & Aspect</b><small>9:16, 16:9 and 1:1 social formats.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Photo Slideshow"><b>🖼️ Photo Slideshow</b><small>Turn wedding photos into a video story.</small><span class="lock">🔒</span></button>
+<button class="tool locked" data-pro="1" data-tool="Export Presets"><b>📦 Export Presets</b><small>Reels, YouTube and HD delivery presets.</small><span class="lock">🔒</span></button>
+</div>
+<div class="card" style="margin-top:16px">
+<h3 id="selectedToolTitle">Tool workspace</h3>
+<p class="sub" id="selectedToolInfo">Choose a free or unlocked tool above.</p>
+<div id="workspace"></div>
+</div>
+</div></section>
+
+<section id="services"><div class="wrap">
+<h2 class="title">💰 Pro Services</h2><p class="sub">Use this page to attract paid editing work.</p>
+<div class="service-grid">
+<div class="service"><h3>💍 Wedding Edit</h3><div class="price">₹499+</div><ul><li>Wedding photo retouching</li><li>Color correction</li><li>Cinematic video highlights</li></ul><button class="btn primary serviceBtn" data-service="Wedding Editing" data-price="499">Order</button></div>
+<div class="service"><h3>🎉 Celebration Edit</h3><div class="price">₹799+</div><ul><li>Birthday/celebration edits</li><li>Photo slideshow</li><li>Reels-ready delivery</li></ul><button class="btn primary serviceBtn" data-service="Celebration Editing" data-price="799">Order</button></div>
+<div class="service"><h3>🎬 Full Video Edit</h3><div class="price">₹1,499+</div><ul><li>Cut, transitions & grading</li><li>Audio sync</li><li>Social/YouTube exports</li></ul><button class="btn primary serviceBtn" data-service="Full Video Editing" data-price="1499">Order</button></div>
+</div>
+</div></section>
+
+<section id="portfolio"><div class="wrap">
+<h2 class="title">🎞️ Demo Portfolio</h2><p class="sub">Replace these sample clips with your own work and only publish videos/photos you have permission to use.</p>
+<div class="portfolio">
+<video controls playsinline preload="metadata" poster="https://dummyimage.com/1280x720/111827/ffffff&text=Anshul+Visuals+Demo" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+<video controls playsinline preload="metadata" poster="https://dummyimage.com/1280x720/111827/ffffff&text=Wedding+Demo" src="https://media.w3.org/2010/05/sintel/trailer.mp4"></video>
+</div>
+</div></section>
+</main>
+
+<div class="modal-bg" id="proModal"><div class="modal">
+<button class="close" id="closePro">×</button>
+<h2>⭐ Unlock Anshul Visuals Pro</h2>
+<p id="modalReason">This feature is part of the Pro toolkit.</p>
+<div class="card" style="margin:12px 0;padding:15px">
+<b>Pro access</b><div class="price">₹999</div><p>One-time example price. Change this amount to your real package price.</p>
+<button class="btn green" id="buyWhatsApp">💬 Buy Pro / Ask for Payment</button>
+</div>
+<p><b>Already paid?</b> Enter your activation key:</p>
+<input class="key" id="keyInput" placeholder="Enter Pro activation key">
+<button class="btn primary" id="activateBtn" style="width:100%;margin-top:7px">🔓 Activate Pro</button>
+<div class="hint">For testing only, the demo key is shown in the code. For real paid access, connect a payment gateway + server-side verification so users cannot unlock Pro by inspecting JavaScript.</div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<footer><div class="wrap foot">
+<div>© 2026 Anshul Visuals • Pro Video Editing</div>
+<div><a href="index.html">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const video=$("video"), placeholder=$("placeholder"), status=$("status");
+let objectURL="", rotate=0, mirror=false, selectedProTool="", trimTimer=null;
+
+const DEMO_KEY="ANSHUL-PRO-2026-DEMO";
+let pro=localStorage.getItem("anshulVisualsPro")==="1";
+function updateProUI(){
+  $("proState").textContent=pro?"PRO UNLOCKED":"FREE MODE";
+  $("proState").style.background=pro?"#25d366":"#ffc857";
+  $("proState").style.color="#111";
+  document.querySelectorAll("[data-pro]").forEach(b=>{
+    if(pro){b.classList.remove("locked");b.querySelector(".lock")?.remove()}
+    else if(!b.querySelector(".lock")){b.classList.add("locked");const s=document.createElement("span");s.className="lock";s.textContent="🔒";b.appendChild(s)}
+  });
+}
+updateProUI();
+
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),2600)}
+function filters(){
+  video.style.filter=`brightness(${$("brightness").value}%) contrast(${$("contrast").value}%) saturate(${$("saturation").value}%) blur(${$("blur").value}px)`;
+  video.style.transform=`rotate(${rotate}deg) scaleX(${mirror?-1:1})`;
+  $("brightnessVal").textContent=$("brightness").value+"%";
+  $("contrastVal").textContent=$("contrast").value+"%";
+  $("saturationVal").textContent=$("saturation").value+"%";
+  $("blurVal").textContent=$("blur").value+"px";
+}
+["brightness","contrast","saturation","blur"].forEach(id=>$(id).addEventListener("input",filters));
+$("volume").addEventListener("input",()=>{video.volume=$("volume").value/100;$("volumeVal").textContent=$("volume").value+"%"});
+$("videoInput").addEventListener("change",e=>{
+  const f=e.target.files[0]; if(!f)return;
+  if(objectURL)URL.revokeObjectURL(objectURL);
+  objectURL=URL.createObjectURL(f);video.src=objectURL;video.load();video.style.display="block";placeholder.style.display="none";
+  video.onloadedmetadata=()=>{$("end").value=video.duration.toFixed(1);status.textContent=`Loaded: ${f.name} • ${video.duration.toFixed(1)} seconds`};
+});
+$("playBtn").onclick=()=>video.play();
+$("pauseBtn").onclick=()=>video.pause();
+$("resetBtn").onclick=()=>{["brightness","contrast","saturation"].forEach(id=>$(id).value=100);$("blur").value=0;$("volume").value=100;video.volume=1;rotate=0;mirror=false;filters();video.currentTime=0;toast("Preview reset.")};
+$("muteBtn").onclick=()=>{video.muted=!video.muted;$("muteBtn").textContent=video.muted?"🔊 Unmute":"🔇 Mute"};
+$("rotateBtn").onclick=()=>{rotate=(rotate+90)%360;filters()};
+$("mirrorBtn").onclick=()=>{mirror=!mirror;filters()};
+$("previewTrim").onclick=()=>{
+  if(!video.src){toast("Upload a video first.");return}
+  let s=Math.max(0,Number($("start").value)||0),e=Number($("end").value)||video.duration;
+  if(e<=s){toast("Trim end must be greater than start.");return}
+  video.currentTime=Math.min(s,video.duration);video.play();clearInterval(trimTimer);
+  trimTimer=setInterval(()=>{if(video.currentTime>=e){video.pause();clearInterval(trimTimer);toast("Trim preview finished.")}},80);
+};
+$("exportBtn").onclick=()=>{
+  if(!video.src){toast("Upload a video first.");return}
+  if(!pro){openPro("Export Preview is a Pro feature.");return}
+  toast("Export preview prepared. For full MP4 rendering, connect a server-side/FFmpeg export service.");
+  video.currentTime=Number($("start").value)||0;video.play();
+};
+
+const workspace=$("workspace"), toolTitle=$("selectedToolTitle"), toolInfo=$("selectedToolInfo");
+function renderTool(tool){
+  toolTitle.textContent=tool;workspace.innerHTML="";
+  if(tool==="Cut & Trim"){
+    toolInfo.textContent="Set start/end seconds and preview the selected segment.";
+    workspace.innerHTML='<button class="btn primary" id="toolTrim">▶ Preview Selected Trim</button>';
+    $("toolTrim").onclick=$("previewTrim").onclick;
+    return;
+  }
+  if(tool==="Cinematic Color Grade"){
+    toolInfo.textContent="Premium cinematic grade controls.";
+    workspace.innerHTML='<button class="btn primary" id="cinema">🎬 Apply Cinematic Grade</button> <button class="btn secondary" id="clearGrade">Clear</button>';
+    $("cinema").onclick=()=>{$("brightness").value=104;$("contrast").value=118;$("saturation").value=112;filters();toast("Cinematic grade applied.")};
+    $("clearGrade").onclick=$("resetBtn").onclick;return;
+  }
+  if(tool==="Text & Titles"){
+    toolInfo.textContent="Add a title overlay to the preview.";
+    workspace.innerHTML='<input id="titleInput" type="text" placeholder="Write your title..."><div class="actions"><button class="btn primary" id="applyTitle">Add Title</button><button class="btn secondary" id="clearTitle">Clear</button></div>';
+    $("applyTitle").onclick=()=>{$("textOverlay").textContent=$("titleInput").value;toast("Title added to preview.")};
+    $("clearTitle").onclick=()=>{$("textOverlay").textContent=""};return;
+  }
+  if(tool==="Speed Control"){
+    toolInfo.textContent="Change playback speed for slow motion or fast preview.";
+    workspace.innerHTML='<select id="speed"><option value="0.25">0.25× Slow</option><option value="0.5">0.5× Slow</option><option value="1" selected>1× Normal</option><option value="1.5">1.5×</option><option value="2">2× Fast</option></select>';
+    $("speed").onchange=()=>{video.playbackRate=Number($("speed").value);toast("Playback speed changed.")};return;
+  }
+  if(tool==="Audio Mixer"){
+    toolInfo.textContent="Control preview audio level.";
+    workspace.innerHTML='<input id="mix" type="range" min="0" max="100" value="100"><div class="small" style="color:#aab5ca;margin-top:6px">Preview volume</div>';
+    $("mix").oninput=()=>{video.volume=Number($("mix").value)/100};return;
+  }
+  if(tool==="Crop & Aspect"){
+    toolInfo.textContent="Switch preview aspect ratio.";
+    workspace.innerHTML='<select id="aspect"><option value="16/9">16:9 Landscape</option><option value="9/16">9:16 Reel</option><option value="1/1">1:1 Square</option></select>';
+    $("aspect").onchange=()=>{$("preview").style.aspectRatio=$("aspect").value;toast("Aspect ratio changed.")};return;
+  }
+  if(tool==="Transitions"){
+    toolInfo.textContent="Preview a simple fade transition effect.";
+    workspace.innerHTML='<button class="btn primary" id="fade">✨ Play Fade Preview</button>';
+    $("fade").onclick=()=>{video.style.opacity="0";setTimeout(()=>video.style.opacity="1",650);toast("Fade transition preview.")};return;
+  }
+  if(tool==="LUT Presets"){
+    toolInfo.textContent="Choose a premium look.";
+    workspace.innerHTML='<select id="lut"><option value="cinema">Cinematic</option><option value="vivid">Vivid</option><option value="bw">Black & White</option><option value="warm">Warm</option></select>';
+    $("lut").onchange=()=>{let v=$("lut").value;if(v==="cinema"){$("brightness").value=103;$("contrast").value=120;$("saturation").value=110;$("blur").value=0}else if(v==="vivid"){$("brightness").value=106;$("contrast").value=115;$("saturation").value=145}else if(v==="bw"){$("saturation").value=0}else{$("brightness").value=105;$("contrast").value=108;$("saturation").value=112}filters();toast("Preset applied.")};return;
+  }
+  if(tool==="Export Presets"){
+    toolInfo.textContent="Choose a delivery format for your project brief.";
+    workspace.innerHTML='<select id="exportPreset"><option>Instagram Reel — 1080×1920</option><option>YouTube — 1920×1080</option><option>Square — 1080×1080</option><option>HD Archive — 1920×1080</option></select><button class="btn primary" id="markExport" style="margin-top:10px">Set Delivery</button>';
+    $("markExport").onclick=()=>toast("Delivery preset selected: "+$("exportPreset").value);return;
+  }
+  if(tool==="Multi Clip Timeline"){
+    toolInfo.textContent="Select multiple video files to create an edit brief.";
+    workspace.innerHTML='<input id="multi" type="file" multiple accept="video/*"><div id="multiList" class="small" style="margin-top:8px;color:#aab5ca"></div>';
+    $("multi").onchange=()=>{$("multiList").textContent=[...$("multi").files].map((f,i)=>(i+1)+". "+f.name).join(" • ")||"No clips selected"};return;
+  }
+  if(tool==="Noise Reduction"){toolInfo.textContent="Noise reduction requires an audio processing engine. The paid tool is unlocked here and ready for a backend/audio processor.";workspace.innerHTML='<button class="btn primary" onclick="toast(\'Noise-reduction job marked for processing.\')">🎙️ Process Audio</button>';return}
+  if(tool==="Photo Slideshow"){toolInfo.textContent="Choose images for a slideshow project brief.";workspace.innerHTML='<input id="pics" type="file" multiple accept="image/*"><div id="picList" class="small" style="margin-top:8px;color:#aab5ca"></div>';$("pics").onchange=()=>{$("picList").textContent=`${$("pics").files.length} photo(s) selected for slideshow.`};return}
+}
+
+document.querySelectorAll(".tool").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    if(btn.dataset.pro==="1"&&!pro){openPro(btn.dataset.tool+" is a Pro feature.");return}
+    document.querySelectorAll(".tool").forEach(x=>x.classList.remove("active"));btn.classList.add("active");
+    renderTool(btn.dataset.tool);
+    $("selectedToolInfo").scrollIntoView({behavior:"smooth",block:"center"});
+  });
+});
+
+function openPro(reason){$("modalReason").textContent=reason||"Unlock the complete Pro toolkit.";$("proModal").style.display="flex"}
+$("buyTop").onclick=()=>openPro("Unlock all professional editing tools.");
+$("closePro").onclick=()=>$("proModal").style.display="none";
+$("proModal").addEventListener("click",e=>{if(e.target.id==="proModal")$("proModal").style.display="none"});
+$("activateBtn").onclick=()=>{
+  if($("keyInput").value.trim()===DEMO_KEY){
+    pro=true;localStorage.setItem("anshulVisualsPro","1");updateProUI();$("proModal").style.display="none";toast("🎉 Pro unlocked on this browser.");
+  }else toast("Invalid activation key.");
+};
+$("buyWhatsApp").onclick=()=>{
+  const text=encodeURIComponent("Hello Anshul Visuals, I want to buy Pro Video Editing Tools. Please send me the payment details and activation process.");
+  window.open("https://wa.me/919696853735?text="+text,"_blank");
+};
+
+document.querySelectorAll(".serviceBtn").forEach(b=>b.onclick=()=>{
+  const text=encodeURIComponent(`Hello Anshul Visuals, I want to order ${b.dataset.service}. Starting price ₹${b.dataset.price}. Please share details.`);
+  window.open("https://wa.me/919696853735?text="+text,"_blank");
+});
+
+filters();
+</script>
+</body>
+</html>
